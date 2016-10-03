@@ -101,6 +101,8 @@ module JSON
         end
       end
 
+      base_schema = JSON::Schema.new(base_schema, schema_uri, @options[:version])
+
       if @options[:list]
         base_schema.to_array_schema
       else
