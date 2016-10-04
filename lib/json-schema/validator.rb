@@ -101,10 +101,8 @@ module JSON
         end
       end
 
-      if base_schema.is_a?(Hash)
+      if !base_schema.is_a?(JSON::Schema)
         base_schema = JSON::Schema.new(base_schema, schema_uri, @options[:version])
-      elsif base_schema.is_a?(Array)
-        raise JSON::Schema::SchemaError.new("Invalid schema encountered when resolving :fragment option")
       end
 
       if @options[:list]
