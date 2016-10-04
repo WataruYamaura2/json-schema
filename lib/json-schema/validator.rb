@@ -101,7 +101,9 @@ module JSON
         end
       end
 
-      base_schema = JSON::Schema.new(base_schema, schema_uri, @options[:version])
+      if base_schema.is_a?(Hash)
+        base_schema = JSON::Schema.new(base_schema, schema_uri, @options[:version])
+      end
 
       if @options[:list]
         base_schema.to_array_schema
